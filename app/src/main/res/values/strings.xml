@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Tsuyokikao</string>
+    <string name="button_get_kao">つよきかおか試す</string>
     <string name="capture_button">撮影</string>
-    <string name="request_permission">This app needs camera permission.</string>
-    <string name="button_ok">OK</string>
-    <string name="button_cancel">Cancel</string>
 </resources>
