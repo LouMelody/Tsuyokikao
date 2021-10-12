@@ -15,6 +15,8 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import org.opencv.android.OpenCVLoader;
+
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_DATA = "jp.ac.chibafjb.tsuyokikao.BITMAP";
     public static final int RESULT_CODE = 241;
@@ -23,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
     private static final String[] CAMERA_PERMISSIONS = {Manifest.permission.CAMERA};
     private Bitmap mBitmap = null;
     private ImageView mImageView = null;
+
+    static {
+        if (OpenCVLoader.initDebug()) {
+            Log.d(TAG, "OpenCV installed successfully");
+        } else {
+            Log.d(TAG, "OpenCV is not installed");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +102,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy-------------------");
-
-//        finish();
+        finish();
     }
 
 }

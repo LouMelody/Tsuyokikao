@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Tsuyokikao"
 include ':app'
+include ':sdk'
