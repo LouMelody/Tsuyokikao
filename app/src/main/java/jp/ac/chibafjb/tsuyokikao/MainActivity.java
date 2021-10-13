@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_DATA = "jp.ac.chibafjb.tsuyokikao.BITMAP";
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     static {
         if (OpenCVLoader.initDebug()) {
-            Log.d(TAG, "OpenCV installed successfully");
+            Log.d(TAG, "OpenCV installed successfully. Ver " + OpenCVLoader.OPENCV_VERSION);
         } else {
             Log.d(TAG, "OpenCV is not installed");
         }
@@ -61,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK && requestCode == RESULT_CODE && intent != null) {
             Bundle bundle = intent.getExtras();
-            mBitmap = (Bitmap)bundle.get(MainActivity.EXTRA_DATA);
-            Log.d(TAG, "mBitmap=" + mBitmap.toString());
+            Bitmap bitmap = (Bitmap)bundle.get(MainActivity.EXTRA_DATA);
+
+            mBitmap = ImgCalc.tsuyoCalc(this, bitmap);
+
             mImageView.setImageBitmap(mBitmap);
         }
     }
